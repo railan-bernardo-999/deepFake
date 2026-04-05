@@ -16,7 +16,7 @@ st.markdown("""
         background-color: #1e1e1e;
     }
     </style>
-    """, unsafe_input_to_tags=True)
+    """, unsafe_allow_html=True)
 
 # Pega o nome do amigo pela URL (ex: ?nome=Thiago)
 query_params = st.query_params

@@ -2,7 +2,7 @@ import streamlit as st
 import time
 
 # Configuração da página (Tema Dark por padrão)
-st.set_page_config(page_title="Terminal de Acesso", page_icon="💻")
+st.set_page_config(page_title="Terminal de Acesso", page_icon="💻", layout="centered")
 
 # Estilo Hacker (Fundo preto e texto verde neon)
 st.markdown("""

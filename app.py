@@ -1,48 +1,57 @@
 import streamlit as st
 import time
 
-# Configuração da página para parecer um terminal
-st.set_page_config(page_title="System Breach Detected", page_icon="⚠️")
+# Configuração da página
+st.set_page_config(page_title="Terminal de Acesso", page_icon="💻")
 
-# CSS para deixar a página com cara de hacker (fundo preto e letras verdes)
+# Estilo Hacker (Fundo preto e texto verde)
 st.markdown("""
     <style>
-    .main {
-        background-color: #0e1117;
-        color: #00ff00;
-        font-family: 'Courier New', Courier, monospace;
+    .stApp {
+        background-color: #000000;
     }
-    stAlert {
-        background-color: #1e1e1e;
+    .css-10trblm, .stText, p, h1, h2, h3 {
+        color: #00FF00 !important;
+        font-family: 'Courier New', Courier, monospace !important;
     }
     </style>
     """, unsafe_allow_html=True)
 
-# Pega o nome do amigo pela URL (ex: ?nome=Thiago)
-query_params = st.query_params
-nome_amigo = query_params.get("nome", "Atônio Alves")
+# Captura o nome da URL
+nome_amigo = st.query_params.get("nome", "Antônio Alves")
 
-st.title("🚨 ACESSO NÃO AUTORIZADO")
-st.write(f"Conectando ao terminal de: **{nome_amigo}**...")
+# 1. Título Inicial
+st.title("💾 SYSTEM_ROOT: ACCESS_CORE")
+st.write("---")
 
-# Simulador de progresso
-if st.button("INICIAR DECODIFICAÇÃO"):
-    progress_bar = st.progress(0)
-    status_text = st.empty()
-    
-    steps = [
-        "Bypassing firewall...",
-        "Acessando metadados do WhatsApp...",
-        "Localizando coordenadas GPS...",
-        "Extraindo histórico de pesquisas vergonhosas...",
-        "ACESSO CONCEDIDO!"
-    ]
-    
-    for i, step in enumerate(steps):
-        status_text.text(f"Status: {step}")
-        progress_bar.progress((i + 1) * 20)
-        time.sleep(1.2) # Pausa dramática
-    
-    st.balloons()
-    st.success(f"🔓 CONCLUÍDO: {nome_amigo}, eu sei o que você comeu o viado e não pagou kkkkkkkkkkkk!")
-    st.image("https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNGI5MmJid2Z6Z3R6Z3R6Z3R6Z3R6Z3R6Z3R6Z3R6Z3R6Z3R6JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/HwNnWtrE1p29M07tXC/giphy.gif")
+# 2. O "Loading" inicial (Suspense)
+with st.spinner('Estabelecendo conexão segura...'):
+    time.sleep(3) # Espera 3 segundos fingindo que está conectando
+
+# 3. Simulação do Terminal executando comandos
+st.write(f"Iniciando varredura em: {nome_amigo}...")
+
+log_placeholder = st.empty() # Espaço que vamos atualizar com as linhas de código
+log_conteudo = ""
+
+comandos = [
+    "> Localizando endereço IP...",
+    "> Bypassando Firewall nível 4...",
+    "> Acessando pacotes de dados privados...",
+    "> Descriptografando arquivos confidenciais...",
+    "> Analisando histórico de geolocalização...",
+    "> [ERRO] Tentativa de bloqueio detectada...",
+    "> Ignorando bloqueio... Sucesso!",
+    "> Extraindo segredos..."
+]
+
+for cmd in comandos:
+    log_conteudo += cmd + "\n"
+    log_placeholder.code(log_conteudo) # Exibe como bloco de código (estilo terminal)
+    time.sleep(1.5) # Pausa entre cada comando para dar realismo
+
+# 4. Finalização de Impacto
+st.write("---")
+time.sleep(1)
+st.success(f"🔓 CONCLUÍDO: {nome_amigo}, eu sei o que você comeu o viado e não pagou kkkkkkkk!")
+st.image("https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNGI5MmJid2Z6Z3R6Z3R6Z3R6Z3R6Z3R6Z3R6Z3R6Z3R6Z3R6JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/HwNnWtrE1p29M07tXC/giphy.gif")
